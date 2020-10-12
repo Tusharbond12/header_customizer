@@ -6,14 +6,19 @@ import pymongo
 
 app=Flask(__name__)
 @app.route('/', methods=['GET','POST'])
-def signup():
-    return render_template('signup.html')
-@app.route('/homepage_sign_up',methods=['POST'])
+def register():
+    return render_template('register.html')
+
+@app.route('/login', methods=['GET','POST'])
+def login():
+    return render_template('login.html')
+
+@app.route('/homepage_sign_up',methods=['POST','GET'])
 def homepage_signup():
 
-
-
     return render_template("index.html")
+
+
 @app.route('/homepage_signin',methods=['POST'])
 def homepage_signin():
 
@@ -44,4 +49,4 @@ def result():
     return render_template('result.html', res_headers=res_headers)
 
 if __name__ == "__main__":
-    app.run(port=8000,debug=True)
+    app.run(port=8080,debug=True)
