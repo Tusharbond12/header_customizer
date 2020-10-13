@@ -5,6 +5,9 @@
      <script type='text/javascript'>
              function addFields(){
             var number = document.getElementById("member").value;
+            if(number == ""){
+              return
+            }
             var container = document.getElementById("container");
            
                 container.appendChild(document.createTextNode(number));
@@ -20,6 +23,7 @@
                 container.appendChild(input);
                 container.appendChild(document.createElement("br"));
                 container.appendChild(document.createElement("br"));
+                document.getElementById("member").value='';
                            
         }
     </script>
@@ -87,29 +91,46 @@
 
 
     <!-- END OF NAVBAR-->
+    <!--
     <input type="text" class="" id="member" name="member" value="">
-<a href="#" id="enter_headers" onclick="addFields()" class="btn btn-success" >Add Header </a>
+<a href="#" id="enter_headers" onclick="addFields()" class="btn btn-success" >Add Header </a>-->
     <div>
     <center><h1 class="">ENTER URL</h1></center>
   </div>
   <form method="POST"  action="/result">
+    <div style="border-style: solid;border-color: black;border-width: 1px; padding: 10px;">
   	<div class="form-row center">
 
   		<div class="form-group col-md-6 center">
   			<center>
-      <label >Enter URL</label>
-      </center>
-      <input type="text" class="form-control"  name='url' >
-    </div></div>
-      <div class="form-row center">
-
-  		<div class="form-group col-md-6 center" id="container">
-    </div></div>
+            <label >Enter URL</label>
+        </center>
+        <input type="text" class="form-control"  name='url' >
+      </div>
+  </div>
+  
+    <div class="form-row center">
+      <div class="form-group col-md-6 center" id="container"></div>
+    </div>
 <center>
 
   <input  type="submit" class="btn btn-primary ">
   </center>
+  </div>
+  
 </form>
+<div class="form-row center">
+  <div class="form-group col-md-6 center">
+    <div class="">
+      <input type="text" class="form-control" id="member" name="member" value="">
+      <a href="#" id="enter_headers" onclick="addFields()" class="btn btn-success" >Add Header </a>
+
+
+    </div>
+    
+  </div>
+  
+</div>
 
 
     

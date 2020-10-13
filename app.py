@@ -34,7 +34,7 @@ def result():
         if(url[0:4] != 'http' or url[0:5] != "https"):
             url = "http://" + url
         print(url)
-        attr=dict(request.form)
+        attr=request.form.to_dict()
         print(attr)
         attr.pop('url')
         headers=attr
