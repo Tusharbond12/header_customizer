@@ -2,6 +2,27 @@
 <html lang="en">
   <head>
     <!-- Required meta tags -->
+     <script type='text/javascript'>
+             function addFields(){
+            var number = document.getElementById("member").value;
+            var container = document.getElementById("container");
+           
+                container.appendChild(document.createTextNode(number));
+
+                var input = document.createElement("input");
+                var label = document.createElement("label");
+                label.value=number
+                input.type = "text";
+                input.name=number;
+                input.class="form-control"
+                container.appendChild(label);
+                container.appendChild(document.createElement("br"));
+                container.appendChild(input);
+                container.appendChild(document.createElement("br"));
+                container.appendChild(document.createElement("br"));
+                           
+        }
+    </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -66,10 +87,12 @@
 
 
     <!-- END OF NAVBAR-->
+    <input type="text" class="" id="member" name="member" value="">
+<a href="#" id="enter_headers" onclick="addFields()" class="btn btn-success" >Add Header </a>
     <div>
     <center><h1 class="">ENTER URL</h1></center>
   </div>
-  <form method="POST" action="/result">
+  <form method="POST"  action="/result">
   	<div class="form-row center">
 
   		<div class="form-group col-md-6 center">
@@ -78,16 +101,10 @@
       </center>
       <input type="text" class="form-control"  name='url' >
     </div></div>
-  <div class="form-row center">
-    <div class="form-group col-md-6">
-      <label >From</label>
-      <input type="text" class="form-control"  name='from'>
-    </div>
-    <div class="form-group col-md-6">
-      <label >host</label>
-      <input type="text" class="form-control"  name='host'>
-    </div>
-  </div>
+      <div class="form-row center">
+
+  		<div class="form-group col-md-6 center" id="container">
+    </div></div>
 <center>
 
   <input  type="submit" class="btn btn-primary ">

@@ -15,8 +15,17 @@ def login():
 
 @app.route('/',methods=['POST','GET'])
 def homepage_signup():
-
+    rule = request.url_rule
+    print("HELLO"+rule.rule)
     return render_template("index.html")
+
+@app.route('/letsee',methods=['GET','POST'])
+def check_up():
+    fromm=request.form['tus']
+    wh=request.form['pus']
+    print('This is ', fromm )
+    print('This is ',wh)
+    return render_template('result.html')
 
 @app.route('/result',methods=['POST'])
 def result():
@@ -25,19 +34,12 @@ def result():
         if(url[0:4] != 'http' or url[0:5] != "https"):
             url = "http://" + url
         print(url)
-        fromm = ""
-        try:
-            fromm = request.form['from']
-        except Exception:
-            fromm = ""
-        host = ""
-        try:
-            host = request.form['host']
-        except Exception:
-            host = ""
-        headers={'From':fromm , 'Host': host}
-        dt=datetime.now()
-        req=requests.get(url)
+        attr=dict(request.form)
+        print(attr)
+        attr.pop('url')
+        headers=attr
+        #dt=datetime.now()
+        req=requests.get(url,headers=headers)
         #headers['dt']=dt
 
         res_headers = req.headers
