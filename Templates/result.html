@@ -7,6 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
   <style>
       #grad1{
   background-image: linear-gradient(to right, rgb(172,255,172), rgb(255,128,255));
@@ -76,7 +77,26 @@
 </div>
 
 <!-- sddcdsjdsjc jscsjdsnsd sjcjscsjcds jshcjsjsc sjshushdusdhusad s-->
-<h2 style="color: black;text-align: center;"class="mt-2"> REQUEST OBJECT ( Headers )</h2>
+<h2 style="color: black;text-align: center;"class="mt-2"> REQUEST OBJECT ( Headers , From App interface)</h2>
+<table class="styled-table center" style="width:100%">
+    <thead>
+        <tr style="width:100%">
+            <th>HEADER</th>
+            <th>VALUE</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    {% for key,value in req.request.headers.items() %}
+        <tr style="width:100%">
+            <td>{{key}}</td>
+            <td>{{value}}</td>
+        </tr>
+     {% endfor %}
+        <!-- and so on... -->
+    </tbody>
+</table>
+<h2 style="color: black;text-align: center;"class="mt-2"> REQUEST OBJECT ( Headers ,From your Machine )</h2>
 <table class="styled-table center" style="width:100%">
     <thead>
         <tr style="width:100%">
@@ -95,6 +115,10 @@
         <!-- and so on... -->
     </tbody>
 </table>
+      <h2 style="color: black;text-align: center;"class="mt-2">Response Content</h2>
+<textarea  name="w3review" rows="10" cols="208">
+    {{req.text}}
+</textarea>
 
 
   <!-- Optional JavaScript -->

@@ -69,12 +69,9 @@
                   </div>
               </div>
           </form>
-          <div class="navbar-nav">
-              <a href="{{ url_for('login') }}" class="nav-item nav-link active ml-2">Login</a>
+           <div class="navbar-nav">
+              <button type="button" formaction="/history"  class="btn btn-success">History</button>
           </div>
-          <div class="navbar-nav">
-            <a href="{{ url_for('register') }}" class="nav-item nav-link active ml-2">Register</a>
-        </div>
       </div>
   </nav>
   <h3 style="color: red;text-align: center;margin-top: 0px;">{{query}}</h3>
