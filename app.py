@@ -19,7 +19,7 @@ def history():
     try:
 
         import pymongo
-        client = pymongo.MongoClient("mongodb+srv://admin:123@cluster0.jc3ai.mongodb.net/header_visualiser?retryWrites=true&w=majority")
+        client = pymongo.MongoClient("mongodb://localhost:27017/")
         dataBase = client['header_visualiser']
         COLLECTION_NAME = "req_res"
         collection = dataBase[COLLECTION_NAME]
@@ -53,7 +53,7 @@ def result():
         headers=attr
         req=requests.get(url,headers=headers)
         res_headers = req.headers
-        client = pymongo.MongoClient("mongodb+srv://admin:123@cluster0.jc3ai.mongodb.net/header_visualiser?retryWrites=true&w=majority")
+        client = pymongo.MongoClient("mongodb://localhost:27017/")
         dataBase = client['header_visualiser']
         COLLECTION_NAME = "req_res"
         collection = dataBase[COLLECTION_NAME]
