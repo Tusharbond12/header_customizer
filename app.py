@@ -81,13 +81,13 @@ def result():
         
         
 
-        #client = pymongo.MongoClient("mongodb://localhost:27017/")
-        #dataBase = client['header_visualiser']
-        #COLLECTION_NAME = "req_res"
-        #collection = dataBase[COLLECTION_NAME]
-        #dt=datetime.now()
-        #record={'date':dt,'request':req.request.headers,'response':res_headers}
-        #collection.insert_one(record)
+        client = pymongo.MongoClient("mongodb://localhost:27017/")
+        dataBase = client['header_visualiser']
+        COLLECTION_NAME = "req_res"
+        collection = dataBase[COLLECTION_NAME]
+        dt=datetime.now()
+        record={'date':dt,'request':req.request.headers,'response':res_headers}
+        collection.insert_one(record)
         text=HTMLBeautifier.beautify(req.text, 4)
 
 
