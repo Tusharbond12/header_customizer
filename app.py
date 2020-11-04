@@ -78,26 +78,18 @@ def result():
 
 
         res_headers = req.headers
-<<<<<<< HEAD
         
         
-        client = pymongo.MongoClient("mongodb+srv://admin:123@cluster0.jc3ai.mongodb.net/header_visualiser?retryWrites=true&w=majority")
-        dataBase = client['header_visualiser']
-        COLLECTION_NAME = "req_res"
-        collection = dataBase[COLLECTION_NAME]
-        dt=datetime.now()
-        record={'date':dt,'request':req.request.headers,'response':res_headers}
-        collection.insert_one(record)
-=======
-        client = pymongo.MongoClient("mongodb://localhost:27017/")
-        dataBase = client['header_visualiser']
-        COLLECTION_NAME = "req_res"
-        collection = dataBase[COLLECTION_NAME]
-        dt=datetime.now()
-        record={'date':dt,'request':req.request.headers,'response':res_headers}
-        collection.insert_one(record)
+
+        #client = pymongo.MongoClient("mongodb://localhost:27017/")
+        #dataBase = client['header_visualiser']
+        #COLLECTION_NAME = "req_res"
+        #collection = dataBase[COLLECTION_NAME]
+        #dt=datetime.now()
+        #record={'date':dt,'request':req.request.headers,'response':res_headers}
+        #collection.insert_one(record)
         text=HTMLBeautifier.beautify(req.text, 4)
->>>>>>> a0d877e925298b52d6506ccdd1f63437a087da53
+
 
 
         content = {"res_headers":res_headers,"r_url":req.url,'req':req,'text':text }
