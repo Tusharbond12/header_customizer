@@ -3,6 +3,7 @@ from flask import Flask, render_template, request, jsonify
 import requests
 from datetime import datetime
 import pymongo
+from html5print import HTMLBeautifier
 import json
 from flask_cors import CORS,cross_origin
 
@@ -60,9 +61,10 @@ def result():
         dt=datetime.now()
         record={'date':dt,'request':req.request.headers,'response':res_headers}
         collection.insert_one(record)
+        text=HTMLBeautifier.beautify(req.text, 4)
 
 
-        content = {"res_headers":res_headers,"r_url":req.url,'req':req}
+        content = {"res_headers":res_headers,"r_url":req.url,'req':req,'text':text }
         return render_template('result.html',**content)
     except Exception:
         return render_template('index.html',query="No such url exist!")
