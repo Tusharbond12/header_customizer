@@ -3,6 +3,7 @@ from flask import Flask, render_template, request, jsonify
 import requests
 from datetime import datetime
 import pymongo
+from html5print import HTMLBeautifier
 import json
 from flask_cors import CORS,cross_origin
 import pymongo
@@ -20,7 +21,7 @@ def history():
     try:
 
         import pymongo
-        client = pymongo.MongoClient("mongodb+srv://admin:123@cluster0.jc3ai.mongodb.net/header_visualiser?retryWrites=true&w=majority")
+        client = pymongo.MongoClient("mongodb://localhost:27017/")
         dataBase = client['header_visualiser']
         COLLECTION_NAME = "req_res"
         collection = dataBase[COLLECTION_NAME]
@@ -77,18 +78,29 @@ def result():
 
 
         res_headers = req.headers
+<<<<<<< HEAD
         
         
-        #client = pymongo.MongoClient("mongodb+srv://admin:123@cluster0.jc3ai.mongodb.net/header_visualiser?retryWrites=true&w=majority")
-        #dataBase = client['header_visualiser']
-        #COLLECTION_NAME = "req_res"
-        #collection = dataBase[COLLECTION_NAME]
-        #dt=datetime.now()
-        #record={'date':dt,'request':req.request.headers,'response':res_headers}
-        #collection.insert_one(record)
+        client = pymongo.MongoClient("mongodb+srv://admin:123@cluster0.jc3ai.mongodb.net/header_visualiser?retryWrites=true&w=majority")
+        dataBase = client['header_visualiser']
+        COLLECTION_NAME = "req_res"
+        collection = dataBase[COLLECTION_NAME]
+        dt=datetime.now()
+        record={'date':dt,'request':req.request.headers,'response':res_headers}
+        collection.insert_one(record)
+=======
+        client = pymongo.MongoClient("mongodb://localhost:27017/")
+        dataBase = client['header_visualiser']
+        COLLECTION_NAME = "req_res"
+        collection = dataBase[COLLECTION_NAME]
+        dt=datetime.now()
+        record={'date':dt,'request':req.request.headers,'response':res_headers}
+        collection.insert_one(record)
+        text=HTMLBeautifier.beautify(req.text, 4)
+>>>>>>> a0d877e925298b52d6506ccdd1f63437a087da53
 
 
-        content = {"res_headers":res_headers,"r_url":req.url,'req':req}
+        content = {"res_headers":res_headers,"r_url":req.url,'req':req,'text':text }
         return render_template('result.html',**content)
     except Exception:
         return render_template('index.html',query="No such url exist!")
