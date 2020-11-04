@@ -43,7 +43,12 @@
   background: -o-linear-gradient(to top, #76b852, #8DC26F);
   background: linear-gradient(to top, #76b852, #8DC26F);
   background-size: cover;
+
+
+  background-image: url('https://cdn.hipwallpaper.com/i/53/41/bq9fjy.jpg');
+  background-repeat: no-repeat;
   background-attachment: fixed;
+  background-size: 100% 100%;
 }
 .center {
   margin: auto;
@@ -89,11 +94,27 @@
 
     <!-- END OF NAVBAR-->
       <div>
+        
     <center><h1 class="">ENTER URL</h1></center>
   </div>
   <form method="POST"  action="/result">
     <div style="border-style: solid;border-color: black;border-width: 1px; padding: 10px;">
   	<div class="form-row center">
+
+      <div class="form-group col-md-6 center">
+  			<center>
+            <label >Method</label>
+        </center>
+        <input type="text" class="form-control" name="method" list="cityname">
+      <datalist id="cityname">
+        <option value="Get">
+        <option value="Post">
+        <option value="Put">
+        <option value="Head">
+        <option value="Delete">
+      </datalist>
+      </div>
+
 
   		<div class="form-group col-md-6 center">
   			<center>

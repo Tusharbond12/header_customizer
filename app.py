@@ -5,6 +5,7 @@ from datetime import datetime
 import pymongo
 import json
 from flask_cors import CORS,cross_origin
+import pymongo
 
 app=Flask(__name__)
 CORS(app)
@@ -46,20 +47,45 @@ def history():
 def result():
     try:
         url = request.form['url']
+        meth = request.form['method']
+        print(meth)
         if(url[0:4] != 'http' or url[0:5] != "https"):
             url = "http://" + url
         attr=request.form.to_dict()
         attr.pop('url')
+        attr.pop('method')
         headers=attr
         req=requests.get(url,headers=headers)
+
+        if(meth=="Post"):
+            req=requests.post(url,headers=headers)
+        elif(meth=="Delete"):
+            req=requests.delete(url,headers=headers)
+        elif(meth=="Head"):
+            req=requests.head(url,headers=headers)
+        elif(meth=="Put"):
+            req=requests.put(url,headers=headers)
+
+
+
+
+
+
+
+
+
+
+
         res_headers = req.headers
-        client = pymongo.MongoClient("mongodb+srv://admin:123@cluster0.jc3ai.mongodb.net/header_visualiser?retryWrites=true&w=majority")
-        dataBase = client['header_visualiser']
-        COLLECTION_NAME = "req_res"
-        collection = dataBase[COLLECTION_NAME]
-        dt=datetime.now()
-        record={'date':dt,'request':req.request.headers,'response':res_headers}
-        collection.insert_one(record)
+        
+        
+        #client = pymongo.MongoClient("mongodb+srv://admin:123@cluster0.jc3ai.mongodb.net/header_visualiser?retryWrites=true&w=majority")
+        #dataBase = client['header_visualiser']
+        #COLLECTION_NAME = "req_res"
+        #collection = dataBase[COLLECTION_NAME]
+        #dt=datetime.now()
+        #record={'date':dt,'request':req.request.headers,'response':res_headers}
+        #collection.insert_one(record)
 
 
         content = {"res_headers":res_headers,"r_url":req.url,'req':req}
